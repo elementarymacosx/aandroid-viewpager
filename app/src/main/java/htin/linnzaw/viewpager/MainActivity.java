@@ -6,19 +6,24 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements AppleFragment.OnFragmentInteractionListener,
+        BananaFragment.OnFragmentInteractionListener, GrapesFragment.OnFragmentInteractionListener,
+        OrangeFragment.OnFragmentInteractionListener
 {
     private TabLayout tablayout;
-    private ViewPager viewpager;
-    private int[] tabicons = {R.drawable.apple, R.drawable.banana, R.drawable.grapes, R.drawable.orange};
+    private final int[] tabicons = {R.drawable.apple, R.drawable.banana, R.drawable.grapes, R.drawable.orange};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewpager = findViewById(R.id.viewpager);
+        ViewPager viewpager = findViewById(R.id.viewpager);
         addTabs(viewpager);
 
         tablayout = findViewById(R.id.tablayout);
@@ -37,6 +42,11 @@ public class MainActivity extends AppCompatActivity
     private void addTabs(ViewPager viewpager)
     {
         ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewpageradapter.addFrag(new AppleFragment(), "APPLE");
+        viewpageradapter.addFrag(new BananaFragment(), "BANANA");
+        viewpageradapter.addFrag(new GrapesFragment(), "GRAPES");
+        viewpageradapter.addFrag(new OrangeFragment(), "ORANGE");
+        viewpager.setAdapter(viewpageradapter);
     }
 
     private void setupTabIcons()
@@ -47,23 +57,46 @@ public class MainActivity extends AppCompatActivity
         Objects.requireNonNull(tablayout.getTabAt(3)).setIcon(tabicons[3]);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri)
+    {
+        Log.e("URI", uri.toString());
+    }
+
+
     class ViewPagerAdapter extends FragmentPagerAdapter
     {
-        public ViewPagerAdapter(FragmentManager fragmentmanager)
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        ViewPagerAdapter(FragmentManager fragmentmanager)
         {
             super(fragmentmanager);
         }
+
         @NotNull
         @Override
         public Fragment getItem(int position)
         {
-            return null;
+            return mFragmentList.get(position);
         }
 
         @Override
         public int getCount()
         {
-            return 1;
+            return mFragmentList.size();
+        }
+
+        void addFrag(Fragment fragment, String title)
+        {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position)
+        {
+            return mFragmentTitleList.get(position);
         }
     }
 }
