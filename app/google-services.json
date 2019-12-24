@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "419127302105",
+    "firebase_url": "https://camreport-9557a.firebaseio.com",
+    "project_id": "camreport-9557a",
+    "storage_bucket": "camreport-9557a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419127302105:android:4dbdc5e4df8e76fee56bc8",
+        "android_client_info": {
+          "package_name": "com.isgm.camreport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419127302105-meje4shnt9jujpvhs1vri5sjp3vhujql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_DQ9KBVoDqAG6NduAs4Vr4ObUo3KfR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419127302105-meje4shnt9jujpvhs1vri5sjp3vhujql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419127302105:android:739cea9b7dfec0c6e56bc8",
+        "android_client_info": {
+          "package_name": "htin.linnzaw.viewpager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419127302105-meje4shnt9jujpvhs1vri5sjp3vhujql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf_DQ9KBVoDqAG6NduAs4Vr4ObUo3KfR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419127302105-meje4shnt9jujpvhs1vri5sjp3vhujql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
