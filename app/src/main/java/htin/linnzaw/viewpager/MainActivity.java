@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity implements AppleFragment.OnF
 
     private void addTabs(ViewPager viewpager)
     {
-        ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(getSupportFragmentManager());
+        FragmentManager fragmentmanager = getSupportFragmentManager();
+        int i = FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
+        //FragmentManager fragmentManager = getFragmentManager();
+        ViewPagerAdapter viewpageradapter = new ViewPagerAdapter(fragmentmanager, i);
         viewpageradapter.addFrag(new AppleFragment(), "APPLE");
         viewpageradapter.addFrag(new BananaFragment(), "BANANA");
         viewpageradapter.addFrag(new GrapesFragment(), "GRAPES");
@@ -63,15 +66,14 @@ public class MainActivity extends AppCompatActivity implements AppleFragment.OnF
         Log.e("URI", uri.toString());
     }
 
-
     class ViewPagerAdapter extends FragmentPagerAdapter
     {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        ViewPagerAdapter(FragmentManager fragmentmanager)
+        ViewPagerAdapter(FragmentManager fragmentmanager,int i)
         {
-            super(fragmentmanager);
+            super(fragmentmanager, i);
         }
 
         @NotNull
